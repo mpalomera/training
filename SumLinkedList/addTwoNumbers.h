@@ -8,8 +8,7 @@ typedef struct ListNode
 } ListNode;
 
 ListNode *addTwoNumbers(ListNode *l1, ListNode *l2);
-ListNode * createLinkedList(void);
-void pushLinkedList(ListNode *l1,int val);
+void pushLinkedList(ListNode **l1,int val);
 int getNumberLinkedList(ListNode *l1);
 
 #endif

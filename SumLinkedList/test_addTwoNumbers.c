@@ -17,14 +17,14 @@ int tests_run = 0;
 
 static char *testLinkedList()
 {
-  ListNode *l1;
+  ListNode *l1 = NULL;
   int number;
   char errorMessage[100];
-  l1 = createLinkedList();
-  pushLinkedList(l1, 2);
-  pushLinkedList(l1, 4);
-  pushLinkedList(l1, 3);
-  mu_assert("error,  l1->val != 2", l1->val == 2);
+  pushLinkedList(&l1, 2);
+  pushLinkedList(&l1, 4);
+  pushLinkedList(&l1, 3);
+  sprintf(errorMessage, "error,  l1->val (%d) != 2", l1->val);
+  mu_assert(strdup(errorMessage), l1->val == 2);
   number = getNumberLinkedList(l1);
   sprintf(errorMessage, "error,  %d != 342", number);
   mu_assert(strdup(errorMessage), number == 342);
@@ -33,23 +33,25 @@ static char *testLinkedList()
 
 static char *testAddTwoNumbers()
 {
-  ListNode *l1;
-  ListNode *l2;
+  ListNode *l1 = NULL;
+  ListNode *l2 = NULL;
+  ListNode *l3 = NULL;
+  int number1, number2, number3, total;
   char errorMessage[100];
-  l1 = createLinkedList();
-  pushLinkedList(l1, 2);
-  pushLinkedList(l1, 4);
-  pushLinkedList(l1, 3);
-  l2 = createLinkedList();
-  pushLinkedList(l2, 5);
-  pushLinkedList(l2, 6);
-  pushLinkedList(l2, 4);
-  int number1, number2, total;
+  pushLinkedList(&l1, 2);
+  pushLinkedList(&l1, 4);
+  pushLinkedList(&l1, 3);
+  pushLinkedList(&l2, 5);
+  pushLinkedList(&l2, 6);
+  pushLinkedList(&l2, 4);
+
+  l3 = addTwoNumbers(l1, l2);
   number1 = getNumberLinkedList(l1);
   number2 = getNumberLinkedList(l2);
+  number3 = getNumberLinkedList(l3);
   total = number1 + number2;
-  sprintf(errorMessage, "error,  %d != 807", total); //Test the convertion
-  mu_assert(strdup(errorMessage), total == 807);
+  sprintf(errorMessage, "error,  %d != %d", number3, total); //Test the convertion
+  mu_assert(strdup(errorMessage), number3 == total);
   return 0;
 }
 

@@ -4,7 +4,7 @@ My solution to the program at
 
 https://leetcode.com/problems/add-two-numbers/#/description
 
-using the awesome c scalffold from 
+using the awesome c junit testing and scalffold from 
 
 http://www.jera.com/techinfo/jtns/jtn002.html
 

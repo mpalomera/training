@@ -13,38 +13,72 @@ Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
 Output: 7 -> 0 -> 8
 */
 
-
 //Assuming that the numbers are big enough and they don't fit on a unsigned integer
 //This is no needed since the list are order on reverse order, it can be added directly
 //Need to found what is the longer number ???
 ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
 {
-    ListNode *bl1 = l1, *bl2 = bl2;
-    ListNode *l3;
-    l3 = createLinkedList();
-    while(l1->next != NULL && l2->next  != NULL) {
-        //Add the two numbers
+    ListNode *l3 = NULL;
+    int rest = 0;
+    int val;
+    while (l1 != NULL && l2 != NULL)
+    {
+        val = rest + l1->val + l2->val;
+        rest = val / 10;
+        val = val % 10;
+        pushLinkedList(&l3, val);
+        l1 = l1->next;
+        l2 = l2->next;
     }
 
+    while (l1 != NULL)
+    {
+        val = rest + l1->val;
+        rest = val / 10;
+        val = val % 10;
+        pushLinkedList(&l3, val);
+        l1 = l1->next;
+    }
 
+    while (l2 != NULL)
+    {
+        val = rest + l2->val;
+        rest = val / 10;
+        val = val % 10;
+        pushLinkedList(&l3, val);
+        l2 = l2->next;
+    }
+
+    return l3;
 }
 
-ListNode *createLinkedList(void)
+ListNode *createLinkedNode(int value)
 {
     ListNode *ln = (ListNode *)malloc(sizeof(ListNode));
-    ln->val = 0;
+    ln->val = value;
     ln->next = NULL;
     return ln;
 }
 
-void pushLinkedList(ListNode *l1, int val)
+void pushLinkedList(ListNode **l1, int val)
 {
-    while (l1->next != NULL)
+    ListNode **p;
+    ListNode *next;
+    p = l1;
+    //Check empty lis
+    if (*p == NULL)
     {
-        l1++;
+        *p = createLinkedNode(val);
     }
-    l1->next = createLinkedList();
-    l1->val = val;
+    else
+    {
+        next = (*p);
+        while (next->next != NULL)
+        {
+            next = next->next;
+        }
+        next->next = createLinkedNode(val);
+    }
 }
 
 int getNumberLinkedList(ListNode *l1)
