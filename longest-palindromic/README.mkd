@@ -1,0 +1,27 @@
+# My solution to 
+https://leetcode.com/problems/longest-palindromic-substring/description/
+
+Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+Input: "babad"
+
+Output: "bab"
+
+Note: "aba" is also a valid answer.
+Example:
+
+Input: "cbbd"
+
+Output: "bb"
+
+#Algorithm
+
+0) is the original string a palindrom => done
+1) get the set of substrings of lenght - 1
+2) is any of the above substrings a palindrom => done
+3) No: repeat 1) and 2) till found the palindrom or lenght of the substring is 1 
+
+# longest-palindromic
+
+# How to run test
+make test
+
