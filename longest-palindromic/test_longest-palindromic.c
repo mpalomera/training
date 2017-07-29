@@ -15,11 +15,11 @@
 
 int tests_run = 0;
 
-static char *testIsPalindrom()
+static char *testIsPalindrome()
 {
   char *pal = "baab";
   int expected = 1;
-  int respond = isPalindrom(pal);
+  int respond = isPalindrome(pal);
   char message[100];
   sprintf(message, "%s %d must equal to %d", pal, respond, expected);
   mu_assert(strdup(message), expected = respond);
@@ -39,7 +39,7 @@ static char *testLongestPalindrome()
 
 static char *allTests()
 {
-  mu_run_test(testIsPalindrom);
+  mu_run_test(testIsPalindrome);
   mu_run_test(testLongestPalindrome);
   return 0;
 }

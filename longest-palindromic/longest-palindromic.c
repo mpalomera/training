@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 #include "longest-palindromic.h"
-#define MAXLENGTH 1000
-int isPalindrom(char *s)
+
+int isPalindrome(char *s)
 {
     int length = strlen(s) - 1;
     int i;
@@ -21,12 +21,15 @@ int isPalindrom(char *s)
 
 char *longestPalindrome(char *s)
 {
-    int length = strlen(s) - 1;
+    char test[MAXLENGTH];
     int slength = strlen(s);
+    int length = slength - 1;
     int initial = 0;
     int i = 0, j = 0;
-    char test[MAXLENGTH];
-    if (isPalindrom(s))
+
+    printf(""); // <-- Mistery. It is needed to work, it is a change on the stack
+   
+    if (isPalindrome(s))
     {
         return strdup(s);
     }
@@ -35,17 +38,15 @@ char *longestPalindrome(char *s)
     {
         while (1)
         {
-
             for (j = 0, i = initial; i < length + initial; i++, j++)
             {
-                test[j] = s[i];
-                printf(""); // <-- Mistery. It is needed to work, it is a change on the stack
+                test[j] = s[i];       
             }
-            if (j == length )
+
+            test[j] = '\0';
+            if (j == length)
             {
-                test[j] = '\0';
-                printf(""); // <-- Mistery. It is needed to work, it is a change on the stack
-                if (isPalindrom(test))
+                if (isPalindrome(test))
                 {
                     return strdup(test);
                 }
