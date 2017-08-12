@@ -1,0 +1,31 @@
+
+# zigzag-conversion
+
+My solution to:
+https://leetcode.com/problems/zigzag-conversion/description/
+
+The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
+
+P   A   H   N
+A P L S I I G
+Y   I   R
+And then read line by line: "PAHNAPLSIIGYIR"
+
+Write the code that will take a string and make this conversion given a number of rows:
+
+string convert(string text, int nRows);
+convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".
+
+#Algorithm
+
+1) Create nRows arrays
+2) Start copying the letters starting by the first array.
+3) Continue copying letters starting by the last array 
+4) Do 2) and 3) till there are no more letters 
+5) Concaten the arrays into one string 
+
+# How to run test
+make test
+
+
+
