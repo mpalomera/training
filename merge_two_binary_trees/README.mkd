@@ -25,9 +25,9 @@ Note: The merging process must start from the root nodes of both trees.
 
 Solution:
 Straight forward, start at the root of both nodes process left to right.
-Alternative recursive solution:
+Recursive solution:
 1) merge root
 2) merge left tree 
 3) merge right tree 
 
-Use a helper function to accumulate the "tree"  
+  
